@@ -22,7 +22,7 @@ function CreatePossessionPage() {
     })
       .then(response => {
         console.log('Possession créée avec succès:', response.data);
-        window.location.href = '/possession';  // Rediriger vers la liste des possessions
+        window.location.href = '/possession';
       })
       .catch(error => {
         console.error('Erreur lors de la création de la possession:', error);

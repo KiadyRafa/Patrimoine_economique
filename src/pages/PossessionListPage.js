@@ -34,7 +34,7 @@ function PossessionListPage() {
   };
 
   const handleGoHome = () => {
-    window.location.href = '/'; // Redirige vers la page d'accueil
+    window.location.href = '/'; 
   };
 
   const handleDeletePossession = (libelle) => {
@@ -42,7 +42,7 @@ function PossessionListPage() {
       axios.delete(`http://localhost:5000/possession/${encodeURIComponent(libelle)}`)
         .then(response => {
           console.log('Possession supprimée avec succès:', response.data);
-          fetchPossessions(); // Recharger la liste des possessions après la suppression
+          fetchPossessions(); 
         })
         .catch(error => {
           console.error('Erreur lors de la suppression de la possession:', error);
@@ -64,7 +64,7 @@ function PossessionListPage() {
           <tr>
             <th>Libellé</th>
             <th>Valeur</th>
-            <th>Date Début</th>
+            <th>Date Debut</th>
             <th>Date Fin</th>
             <th>Taux</th>
             <th>Actions</th>
@@ -75,8 +75,8 @@ function PossessionListPage() {
             <tr key={index}>
               <td>{possession.libelle}</td>
               <td>{possession.valeur}</td>
-              <td>{new Date(possession.date_debut).toLocaleDateString()}</td>
-              <td>{possession.date_fin ? new Date(possession.date_fin).toLocaleDateString() : 'N/A'}</td>
+              <td>{new Date(possession.dateDebut).toLocaleDateString()}</td>
+              <td>{possession.dateFin ? new Date(possession.dateFin).toLocaleDateString() : 'N/A'}</td>
               <td>{possession.taux}</td>
               <td>
                 <button onClick={() => handleClosePossession(possession.libelle)}>Clôturer</button>

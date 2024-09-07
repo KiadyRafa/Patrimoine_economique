@@ -24,10 +24,10 @@ function PatrimoinePage() {
     });
   };
 
-  // Trouve la valeur actuelle (la dernière valeur dans les données)
+  
   const getCurrentValue = () => {
     if (patrimoineData.length > 0) {
-      // Trier les données par date pour s'assurer que la dernière valeur est correcte
+      
       const sortedData = patrimoineData.sort((a, b) => new Date(b.date) - new Date(a.date));
       return sortedData[0].valeur;
     }
