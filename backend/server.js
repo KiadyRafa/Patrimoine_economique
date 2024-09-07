@@ -9,13 +9,13 @@ app.use(express.json());
 
 const dataFilePath = path.join(__dirname, 'data.json');
 
-// Helper function to read data from data.json
+
 const readData = () => {
     const data = fs.readFileSync(dataFilePath, 'utf8');
     return JSON.parse(data);
 };
 
-// Helper function to write data to data.json
+
 const writeData = (data) => {
     fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf8');
 };
@@ -50,13 +50,17 @@ app.post('/possession', (req, res) => {
 
 // Update a possession
 app.put('/possession/:libelle', (req, res) => {
-    const { libelle } = req.params;
+    const libelle = decodeURIComponent(req.params.libelle);
     const { dateFin } = req.body;
     
+    console.log('Libelle reçu:', libelle);
+
     const data = readData();
     const patrimoine = data.find(item => item.model === 'Patrimoine');
-    
     const possession = patrimoine.data.possessions.find(p => p.libelle === libelle);
+    
+    console.log('Possession trouvée:', possession);
+    
     if (!possession) {
         return res.status(404).json({ message: 'Possession not found' });
     }
@@ -66,6 +70,7 @@ app.put('/possession/:libelle', (req, res) => {
     
     res.json(possession);
 });
+
 
 // Delete a possession
 app.delete('/possession/:libelle', (req, res) => {
@@ -109,14 +114,14 @@ app.get('/patrimoine/range', (req, res) => {
         const data = readData();
         const patrimoine = data.find(item => item.model === 'Patrimoine');
         
-        // Si patrimoine n'est pas trouvé, renvoie une erreur 404
+        
         if (!patrimoine) {
             return res.status(404).json({ message: 'Patrimoine not found' });
         }
 
-        // Formatage des données pour le graphique
+        
         const chartData = patrimoine.data.possessions.map(p => ({
-            date: p.dateDebut, // Remplace par la date appropriée
+            date: p.dateDebut, 
             valeur: p.valeur
         }));
 
@@ -129,7 +134,7 @@ app.get('/patrimoine/range', (req, res) => {
 
 
 
-// Start the server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

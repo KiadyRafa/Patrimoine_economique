@@ -19,7 +19,7 @@
           "libelle": "MacBook Pro",
           "valeur": 4300000,
           "dateDebut": "2023-12-25T00:00:00.000Z",
-          "dateFin": "2024-09-06T18:35:47.908Z",
+          "dateFin": "2024-09-07T01:28:00.505Z",
           "tauxAmortissement": 5
         },
         {
@@ -29,7 +29,7 @@
           "libelle": "Compte épargne",
           "valeur": 500000,
           "dateDebut": "2019-01-06T00:00:00.000Z",
-          "dateFin": "2024-09-06T18:36:00.656Z",
+          "dateFin": "2024-09-07T01:14:35.319Z",
           "tauxAmortissement": -5
         },
         {
@@ -39,7 +39,7 @@
           "libelle": "Clothes",
           "valeur": 2000000,
           "dateDebut": "2020-01-01T00:00:00.000Z",
-          "dateFin": null,
+          "dateFin": "2024-09-07T01:14:36.599Z",
           "tauxAmortissement": 10
         },
         {
